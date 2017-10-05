@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F23.PresentationModelLnL.Web.VendorPortal", "F23.PresentationModelLnL.Web.VendorPortal\F23.PresentationModelLnL.Web.VendorPortal.csproj", "{6C933CD8-BA8E-4764-91C2-FDB3D77523C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F23.PresentationModelLnL.Domain", "F23.PresentationModelLnL.Domain\F23.PresentationModelLnL.Domain.csproj", "{DFA2C8C3-A505-408B-94A9-27B2B45D51D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C933CD8-BA8E-4764-91C2-FDB3D77523C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C933CD8-BA8E-4764-91C2-FDB3D77523C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C933CD8-BA8E-4764-91C2-FDB3D77523C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C933CD8-BA8E-4764-91C2-FDB3D77523C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA2C8C3-A505-408B-94A9-27B2B45D51D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA2C8C3-A505-408B-94A9-27B2B45D51D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA2C8C3-A505-408B-94A9-27B2B45D51D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA2C8C3-A505-408B-94A9-27B2B45D51D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A97BAD84-19B5-4729-9FA0-2D825A2A7569}
+	EndGlobalSection
+EndGlobal
