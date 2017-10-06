@@ -12,3 +12,8 @@
 	CONSTRAINT [FK_CaseSheetProducts_CaseSheets] FOREIGN KEY ([CaseSheetId]) REFERENCES [dbo].[CaseSheets] ([Id]),
 	CONSTRAINT [FK_CaseSheetProducts_Products] FOREIGN KEY ([ProductId]) REFERENCES [dbo].[Products] ([Id])
 )
+GO
+
+CREATE NONCLUSTERED INDEX [IX_CaseSheetProducts_CaseSheetId] ON [CaseSheetProducts]([CaseSheetId])
+GO
+

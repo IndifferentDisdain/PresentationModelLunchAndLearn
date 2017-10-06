@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using F23.PresentationModelLnL.Domain.CaseSheets;
-using JetBrains.Annotations;
+﻿using F23.PresentationModelLnL.Domain.CaseSheets;
 using Microsoft.EntityFrameworkCore;
 
 namespace F23.PresentationModelLnL.Repositories
@@ -14,6 +10,8 @@ namespace F23.PresentationModelLnL.Repositories
         }
 
         public DbSet<CaseSheetDetails> CaseSheetDetails { get; set; }
+
+        public DbSet<CaseSheetProduct> CaseSheetProducts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

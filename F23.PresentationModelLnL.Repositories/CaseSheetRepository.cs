@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using F23.PresentationModelLnL.Contracts.Repositories;
+﻿using F23.PresentationModelLnL.Contracts.Repositories;
 using F23.PresentationModelLnL.Domain.CaseSheets;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace F23.PresentationModelLnL.Repositories
 {
@@ -24,6 +24,11 @@ namespace F23.PresentationModelLnL.Repositories
         public Task<CaseSheetDetails> GetCaseSheetDetailsAsync(int caseSheetId)
         {
             return _context.CaseSheetDetails.FindAsync(caseSheetId);
+        }
+
+        public async Task<IList<CaseSheetProduct>> GetCaseSheetProductsAsync(int caseSheetId)
+        {
+            return await _context.CaseSheetProducts.Where(x => x.CaseSheetId == caseSheetId).ToListAsync();
         }
     }
 }

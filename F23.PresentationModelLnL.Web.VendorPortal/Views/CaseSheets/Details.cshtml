@@ -42,6 +42,29 @@
         </dd>
     </dl>
 </div>
+<hr />
+<h3>Products</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(x => Model.CaseSheetProducts[0].ProductSku)</th>
+        <th>@Html.DisplayNameFor(x => Model.CaseSheetProducts[0].Quantity)</th>
+        <th>@Html.DisplayNameFor(x => Model.CaseSheetProducts[0].VendorPrice)</th>
+        <th>@Html.DisplayNameFor(x => Model.CaseSheetProducts[0].TotalVendorPrice)</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.CaseSheetProducts)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => p.ProductSku)<br /><small>@Html.DisplayFor(x => p.ProductDescription)</small></td>
+                <td>@Html.DisplayFor(x => p.Quantity)</td>
+                <td>@Html.DisplayFor(x => p.VendorPrice)</td>
+                <td>@Html.DisplayFor(x => p.TotalVendorPrice)</td>
+            </tr>
+        }
+    </tbody>
+</table>
 <div>
     @if (Model.CanEdit)
     {
@@ -51,5 +74,5 @@
     {
         @Html.ActionLink("Delete", "Delete", new {/* id = Model.PrimaryKey */})
     }
-     <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>

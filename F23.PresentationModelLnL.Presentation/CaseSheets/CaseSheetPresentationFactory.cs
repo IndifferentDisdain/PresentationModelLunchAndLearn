@@ -25,6 +25,7 @@ namespace F23.PresentationModelLnL.Presentation.CaseSheets
             return new CaseSheetDetailsPresentationModel
             {
                 CaseSheetDetails = model,
+                CaseSheetProducts = await _caseSheetRepository.GetCaseSheetProductsAsync(caseSheetId),
                 CanDelete = isUserAdmin,
                 CanEdit = isUserAdmin
             };
