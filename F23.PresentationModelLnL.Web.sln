@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F23.PresentationModelLnL.We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F23.PresentationModelLnL.Domain", "F23.PresentationModelLnL.Domain\F23.PresentationModelLnL.Domain.csproj", "{DFA2C8C3-A505-408B-94A9-27B2B45D51D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F23.PresentationModelLnL.Contracts", "F23.PresentationModelLnL.Contracts\F23.PresentationModelLnL.Contracts.csproj", "{71FB0A19-0FD0-4BBA-8E51-A43E592DA132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F23.PresentationModelLnL.Contracts", "F23.PresentationModelLnL.Contracts\F23.PresentationModelLnL.Contracts.csproj", "{71FB0A19-0FD0-4BBA-8E51-A43E592DA132}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F23.PresentationModelLnL.Repositories", "F23.PresentationModelLnL.Repositories\F23.PresentationModelLnL.Repositories.csproj", "{EA551BC4-179A-4989-81E9-DA3A0313F913}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F23.PresentationModelLnL.Repositories", "F23.PresentationModelLnL.Repositories\F23.PresentationModelLnL.Repositories.csproj", "{EA551BC4-179A-4989-81E9-DA3A0313F913}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F23.PresentationModelLnL.DependencyManager", "F23.PresentationModelLnL.DependencyManager\F23.PresentationModelLnL.DependencyManager.csproj", "{6FFA2022-DE29-4ABC-A5E0-66D328C0E08C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F23.PresentationModelLnL.DependencyManager", "F23.PresentationModelLnL.DependencyManager\F23.PresentationModelLnL.DependencyManager.csproj", "{6FFA2022-DE29-4ABC-A5E0-66D328C0E08C}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "F23.PresentationModelLnL.Storage.SqlServer", "F23.PresentationModelLnL.Storage.SqlServer\F23.PresentationModelLnL.Storage.SqlServer.sqlproj", "{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,12 @@ Global
 		{6FFA2022-DE29-4ABC-A5E0-66D328C0E08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FFA2022-DE29-4ABC-A5E0-66D328C0E08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FFA2022-DE29-4ABC-A5E0-66D328C0E08C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
