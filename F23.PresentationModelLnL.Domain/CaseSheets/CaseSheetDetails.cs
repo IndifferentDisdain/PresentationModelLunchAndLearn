@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace F23.PresentationModelLnL.Domain.CaseSheets
@@ -18,9 +19,11 @@ namespace F23.PresentationModelLnL.Domain.CaseSheets
         public string LocationName { get; set; }
 
         [DisplayName("Case Date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CaseDate { get; set; }
 
         [DisplayName("Total Cost")]
+        [DisplayFormat(DataFormatString = "{0:c}")]
         public decimal TotalCost { get; set; }
 
         [DisplayName("Processed?")]
