@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "F23.PresentationModelLnL.De
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "F23.PresentationModelLnL.Storage.SqlServer", "F23.PresentationModelLnL.Storage.SqlServer\F23.PresentationModelLnL.Storage.SqlServer.sqlproj", "{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F23.PresentationModelLnL.Presentation", "F23.PresentationModelLnL.Presentation\F23.PresentationModelLnL.Presentation.csproj", "{D5FC0A65-46C3-4B88-B6AD-50BE33BE756B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2F49FA14-9453-4CB9-BD4A-1CB47E0A3FA8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D5FC0A65-46C3-4B88-B6AD-50BE33BE756B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FC0A65-46C3-4B88-B6AD-50BE33BE756B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FC0A65-46C3-4B88-B6AD-50BE33BE756B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FC0A65-46C3-4B88-B6AD-50BE33BE756B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

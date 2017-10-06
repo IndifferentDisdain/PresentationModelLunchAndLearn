@@ -1,0 +1,55 @@
+﻿@model F23.PresentationModelLnL.Presentation.CaseSheets.CaseSheetDetailsPresentationModel
+
+@{
+    ViewData["Title"] = "Details";
+    var caseSheet = Model.CaseSheetDetails;
+}
+
+<h2>Case Sheet Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.CaseSheetNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.CaseSheetNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.LocationName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.LocationName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.CaseDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.CaseDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.TotalCost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.TotalCost)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.IsProcessed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.IsProcessed)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (Model.CanEdit)
+    {
+        @Html.ActionLink("Edit", "Edit", new {/* id = Model.PrimaryKey */})
+    }
+    @if (Model.CanDelete)
+    {
+        @Html.ActionLink("Delete", "Delete", new {/* id = Model.PrimaryKey */})
+    }
+     <a asp-action="Index">Back to List</a>
+</div>

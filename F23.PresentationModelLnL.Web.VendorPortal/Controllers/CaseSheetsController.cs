@@ -7,23 +7,20 @@ using F23.PresentationModelLnL.Contracts.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using F23.PresentationModelLnL.Domain.CaseSheets;
+using F23.PresentationModelLnL.Presentation.CaseSheets;
 
 namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 {
     public class CaseSheetsController : Controller
     {
         private readonly ICaseSheetRepository _caseSheetRepository;
+        private readonly ICaseSheetPresentationFactory _caseSheetPresentationFactory;
 
-        public CaseSheetsController(ICaseSheetRepository caseSheetRepository)
+        public CaseSheetsController(ICaseSheetRepository caseSheetRepository, ICaseSheetPresentationFactory caseSheetPresentationFactory)
         {
             _caseSheetRepository = caseSheetRepository;
+            _caseSheetPresentationFactory = caseSheetPresentationFactory;
         }
-        // GET: CaseSheets
-        //public ActionResult Index()
-        //{
-        //    var model = _caseSheetRepository.GetCaseSheetsAsync();
-        //    return View(model);
-        //}
 
         public async Task<ActionResult> Index()
         {
@@ -32,9 +29,10 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
         }
 
         // GET: CaseSheets/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var vm = await _caseSheetPresentationFactory.GetCaseSheetDetailsAsync(id, User?.IsInRole("Administrator") ?? false);
+            return View(vm);
         }
 
         // GET: CaseSheets/Create

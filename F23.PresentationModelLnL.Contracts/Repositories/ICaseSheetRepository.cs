@@ -7,5 +7,6 @@ namespace F23.PresentationModelLnL.Contracts.Repositories
     public interface ICaseSheetRepository
     {
         Task<IEnumerable<CaseSheetDetails>> GetCaseSheetsAsync();
+        Task<CaseSheetDetails> GetCaseSheetDetailsAsync(int caseSheetId);
     }
 }

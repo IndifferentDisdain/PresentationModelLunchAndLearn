@@ -20,5 +20,10 @@ namespace F23.PresentationModelLnL.Repositories
         {
             return await _context.CaseSheetDetails.ToListAsync();
         }
+
+        public Task<CaseSheetDetails> GetCaseSheetDetailsAsync(int caseSheetId)
+        {
+            return _context.CaseSheetDetails.FindAsync(caseSheetId);
+        }
     }
 }
