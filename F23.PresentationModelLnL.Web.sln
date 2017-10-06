@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F23.PresentationModelLnL.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F23.PresentationModelLnL.Repositories", "F23.PresentationModelLnL.Repositories\F23.PresentationModelLnL.Repositories.csproj", "{EA551BC4-179A-4989-81E9-DA3A0313F913}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F23.PresentationModel.DependencyManager", "F23.PresentationModel.DependencyManager\F23.PresentationModel.DependencyManager.csproj", "{6FFA2022-DE29-4ABC-A5E0-66D328C0E08C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F23.PresentationModelLnL.DependencyManager", "F23.PresentationModelLnL.DependencyManager\F23.PresentationModelLnL.DependencyManager.csproj", "{6FFA2022-DE29-4ABC-A5E0-66D328C0E08C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

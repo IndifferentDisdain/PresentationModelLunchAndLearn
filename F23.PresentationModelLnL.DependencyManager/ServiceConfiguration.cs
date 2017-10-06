@@ -3,7 +3,7 @@ using F23.PresentationModelLnL.Contracts.Repositories;
 using F23.PresentationModelLnL.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace F23.PresentationModel.DependencyManager
+namespace F23.PresentationModelLnL.DependencyManager
 {
     public static class ServiceConfiguration
     {
