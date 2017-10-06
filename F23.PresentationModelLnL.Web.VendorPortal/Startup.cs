@@ -23,7 +23,7 @@ namespace F23.PresentationModelLnL.Web.VendorPortal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            ServiceConfiguration.AddServices(services);
+            ServiceConfiguration.AddServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

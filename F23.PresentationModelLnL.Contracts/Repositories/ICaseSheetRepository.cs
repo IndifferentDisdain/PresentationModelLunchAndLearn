@@ -6,6 +6,8 @@ namespace F23.PresentationModelLnL.Contracts.Repositories
 {
     public interface ICaseSheetRepository
     {
-        IEnumerable<CaseSheetDetails> GetCaseSheetsAsync();
+        IEnumerable<CaseSheetDetails> GetCaseSheets();
+
+        Task<IEnumerable<CaseSheetDetails>> GetCaseSheetsAsync();
     }
 }

@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using F23.PresentationModelLnL.Contracts.Repositories;
 using F23.PresentationModelLnL.Domain.CaseSheets;
+using Microsoft.EntityFrameworkCore;
 
 namespace F23.PresentationModelLnL.Repositories
 {
     public class CaseSheetRepository : ICaseSheetRepository
     {
-        public IEnumerable<CaseSheetDetails> GetCaseSheetsAsync()
+        private readonly AppContext _context;
+
+        public CaseSheetRepository(AppContext context)
+        {
+            _context = context;
+        }
+
+        public IEnumerable<CaseSheetDetails> GetCaseSheets()
         {
             return new List<CaseSheetDetails>()
             {
@@ -31,6 +39,11 @@ namespace F23.PresentationModelLnL.Repositories
                     TotalCost = 15000m
                 }
             };
+        }
+
+        public async Task<IEnumerable<CaseSheetDetails>> GetCaseSheetsAsync()
+        {
+            return await _context.CaseSheetDetails.ToListAsync();
         }
     }
 }

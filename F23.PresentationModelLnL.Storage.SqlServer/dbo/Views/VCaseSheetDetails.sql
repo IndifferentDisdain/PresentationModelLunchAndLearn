@@ -8,7 +8,7 @@
 		cs.VendorId,
 		v.Name AS VendorName,
 		cs.CaseDate,
-		0 AS TotalCost,
+		0.00 AS TotalCost,
 		cs.IsProcessed
 	FROM CaseSheets cs
 		INNER JOIN Locations l ON l.Id = cs.LocationId

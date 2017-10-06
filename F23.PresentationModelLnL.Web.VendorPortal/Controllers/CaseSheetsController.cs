@@ -19,9 +19,15 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
             _caseSheetRepository = caseSheetRepository;
         }
         // GET: CaseSheets
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var model = _caseSheetRepository.GetCaseSheetsAsync();
+        //    return View(model);
+        //}
+
+        public async Task<ActionResult> Index()
         {
-            var model = _caseSheetRepository.GetCaseSheetsAsync();
+            var model = await _caseSheetRepository.GetCaseSheetsAsync();
             return View(model);
         }
 
