@@ -22,6 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\F23.PresentationModel.DependencyManager\F23.PresentationModel.DependencyManager.csproj" />
+    <ProjectReference Include="..\F23.PresentationModelLnL.Contracts\F23.PresentationModelLnL.Contracts.csproj" />
     <ProjectReference Include="..\F23.PresentationModelLnL.Domain\F23.PresentationModelLnL.Domain.csproj" />
   </ItemGroup>
 
