@@ -45,3 +45,29 @@ BEGIN
 	SET IDENTITY_INSERT CaseSheets OFF
 
 END
+
+IF NOT EXISTS (SELECT 1 FROM Products)
+BEGIN
+	SET IDENTITY_INSERT Products ON
+
+	INSERT INTO Products (Id, VendorId, ProductSku, Description, VendorPrice, SellingPrice) VALUES
+	(1, 1, 'PS-1', 'Knee Replacement System', 2000.00, 2500.00),
+	(2, 1, 'PS-2', 'Better Knee Replacement System', 3000.00, 3500.00),
+	(3, 2, 'AD-1', 'Heart Valve', 1500.00, 1750.00)
+
+	SET IDENTITY_INSERT Products OFF
+
+END
+
+IF NOT EXISTS (SELECT 1 FROM CaseSheetProducts)
+BEGIN
+	SET IDENTITY_INSERT CaseSheetProducts ON
+
+	INSERT INTO CaseSheetProducts (Id, CaseSheetId, ProductId, ProductSku, ProductDescription, Quantity, VendorPrice, SellingPrice) VALUES
+	(1, 1, 1, 'PS-1', 'Knee Replacement System', 1, 2000.00, 2500.00),
+	(2, 2, 1, 'PS-1', 'Knee Replacement System', 1, 2000.00, 2500.00),
+	(3, 2, 2, 'PS-2', 'Better Knee Replacement System', 1, 3000.00, 3500.00)
+
+	SET IDENTITY_INSERT CaseSheetProducts OFF
+
+END
