@@ -13,6 +13,7 @@
     <ProjectReference Include="..\F23.PresentationModelLnL.Domain\F23.PresentationModelLnL.Domain.csproj" />
     <ProjectReference Include="..\F23.PresentationModelLnL.Presentation\F23.PresentationModelLnL.Presentation.csproj" />
     <ProjectReference Include="..\F23.PresentationModelLnL.Repositories\F23.PresentationModelLnL.Repositories.csproj" />
+    <ProjectReference Include="..\F23.PresentationModelLnL.Services\F23.PresentationModelLnL.Services.csproj" />
   </ItemGroup>
 
 </Project>

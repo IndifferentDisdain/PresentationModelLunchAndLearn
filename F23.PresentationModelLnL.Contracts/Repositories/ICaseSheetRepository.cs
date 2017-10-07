@@ -9,5 +9,8 @@ namespace F23.PresentationModelLnL.Contracts.Repositories
         Task<IEnumerable<CaseSheetDetails>> GetCaseSheetsAsync();
         Task<CaseSheetDetails> GetCaseSheetDetailsAsync(int caseSheetId);
         Task<IList<CaseSheetProduct>> GetCaseSheetProductsAsync(int caseSheetId);
+        void AddCaseSheet(CaseSheet caseSheet);
+        Task SaveAsync();
+        void UpdateCaseSheet(CaseSheet caseSheet);
     }
 }

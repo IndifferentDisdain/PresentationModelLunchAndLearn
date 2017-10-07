@@ -30,5 +30,20 @@ namespace F23.PresentationModelLnL.Repositories
         {
             return await _context.CaseSheetProducts.Where(x => x.CaseSheetId == caseSheetId).ToListAsync();
         }
+
+        public void AddCaseSheet(CaseSheet caseSheet)
+        {
+            _context.CaseSheets.Add(caseSheet);
+        }
+
+        public Task SaveAsync()
+        {
+            return _context.SaveChangesAsync();
+        }
+
+        public void UpdateCaseSheet(CaseSheet caseSheet)
+        {
+            _context.Entry(caseSheet).State = EntityState.Modified;
+        }
     }
 }
