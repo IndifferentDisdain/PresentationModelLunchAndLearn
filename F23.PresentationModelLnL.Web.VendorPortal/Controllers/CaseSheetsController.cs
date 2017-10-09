@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using F23.PresentationModelLnL.Contracts.Repositories;
+using F23.PresentationModelLnL.Contracts.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using F23.PresentationModelLnL.Domain.CaseSheets;
 using F23.PresentationModelLnL.Presentation.CaseSheets;
+using F23.PresentationModelLnL.Web.VendorPortal.Models;
 
 namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 {
@@ -16,10 +18,18 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
         private readonly ICaseSheetRepository _caseSheetRepository;
         private readonly ICaseSheetPresentationFactory _caseSheetPresentationFactory;
 
-        public CaseSheetsController(ICaseSheetRepository caseSheetRepository, ICaseSheetPresentationFactory caseSheetPresentationFactory)
+        private readonly ICaseSheetService _caseSheetService;
+
+        // This would generally be handled by user auth, but skipping that for now.
+        private const int _vendorId = 1;
+
+        public CaseSheetsController(ICaseSheetRepository caseSheetRepository
+            , ICaseSheetPresentationFactory caseSheetPresentationFactory
+            , ICaseSheetService caseSheetService)
         {
             _caseSheetRepository = caseSheetRepository;
             _caseSheetPresentationFactory = caseSheetPresentationFactory;
+            _caseSheetService = caseSheetService;
         }
 
         public async Task<ActionResult> Index()
@@ -44,11 +54,15 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
         // POST: CaseSheets/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(CaseSheetPostModel model)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (!ModelState.IsValid)
+                    return View();
+
+                var request = model.ToCaseSheetCreateRequest(_vendorId);
+                await _caseSheetService.CreateCaseSheetAsync(request);
 
                 return RedirectToAction(nameof(Index));
             }
