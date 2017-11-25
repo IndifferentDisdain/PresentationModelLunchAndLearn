@@ -287,3 +287,12 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 /F23.PresentationModelLnL.Web.VendorPortal/wwwroot/lib
+/F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/index.js.map
+/F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/index.js
+/F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/create.js.map
+/F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/create.js
+/F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/Components/index.js.map
+/F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/Components/index.js
+/F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/Components/create.component.js.map
+/F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/Components/create.component.js
+**/wwwroot/js/**
