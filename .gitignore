@@ -296,3 +296,5 @@ __pycache__/
 /F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/Components/create.component.js.map
 /F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/Components/create.component.js
 **/wwwroot/js/**
+/F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/create.store.js.map
+/F23.PresentationModelLnL.Web.VendorPortal/App/CaseSheets/create.store.js
