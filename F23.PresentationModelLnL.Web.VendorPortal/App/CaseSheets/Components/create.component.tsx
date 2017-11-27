@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StoreCallback } from 'rigby';
 import CreateStore, { ICreateStoreState } from '../create.store';
+import {CaseSheetPostModel} from '../Models';
 
 export default class CreateComponent extends React.Component<{}, ICreateStoreState> {
 
@@ -26,25 +27,26 @@ export default class CreateComponent extends React.Component<{}, ICreateStoreSta
         this.setState(state);
     }
 
-    handleFieldChange: any = (propName: keyof(ICreateStoreState), e: any) => {
+    handleFieldChange: any = (propName: keyof(CaseSheetPostModel), e: any) => {
         CreateStore.handlePropChange(propName, e.currentTarget.value);
     }
 
     render() {
         const {
-            firstName
+            caseSheet
         } = this.state;
 
         return (
             <div className='form-group'>
-                <label htmlFor='firstName'>First Name</label>
+                <label htmlFor='caseSheetNumber'>Case Sheet Number</label>
                 <input
                     type='text'
                     className='form-control'
                     required
-                    value={firstName}
-                    name='firstName'
-                    onChange={this.handleFieldChange.bind(this, 'firstName')}
+                    value={caseSheet.caseSheetNumber || ''}
+                    id='caseSheetNumber'
+                    name='caseSheetNumber'
+                    onChange={this.handleFieldChange.bind(this, 'caseSheetNumber')}
                 />
             </div>
         );

@@ -1,14 +1,15 @@
 import Store from 'rigby';
+import { CaseSheetPostModel, CaseSheetItemPostModel } from './Models';
 
 export interface ICreateStoreState {
-    firstName: string;
+    caseSheet: CaseSheetPostModel
 }
 
 export class CreateStore extends Store<ICreateStoreState> {
     constructor() {
         super('CreateCaseSheet');
         this.state = {
-            firstName: ''
+            caseSheet: new CaseSheetPostModel()
         };
     }
 
@@ -16,9 +17,8 @@ export class CreateStore extends Store<ICreateStoreState> {
         console.log('initialize called.');
     }
 
-    handlePropChange(propName: keyof (ICreateStoreState), value: string) {
-        this.state[propName] = value;
-        console.log(this.state);
+    handlePropChange(propName: keyof (CaseSheetPostModel), value: string) {
+        this.state.caseSheet[propName] = value;
         this.emitChange();
     }
 }

@@ -8,13 +8,16 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, './wwwroot/js'),
-        filename: '[name].bundle.js',
-        libraryTarget: 'var',
-        library: '[name]'
+        publicPath: '/js/',
+        filename: '[name].bundle.js'
     },
+    resolve: {
+        extensions: [ '.ts', '.tsx', '.js', '.jsx' ]
+    },
+    devtool: 'source-map',
     module: {
         rules: [
-            { test: /\.tsx?$/, use: 'awesome-typescript-loader' }
+            { test: /\.tsx?$/, exclude: /node_modules/, loaders: ['react-hot-loader/webpack', 'awesome-typescript-loader'] }
         ]
     },
     plugins: [
@@ -25,7 +28,8 @@ module.exports = {
             { from: './node_modules/jquery/dist', to: path.resolve(__dirname, './wwwroot/js/lib/jquery') },
             { from: './node_modules/react/umd', to: path.resolve(__dirname, './wwwroot/js/lib/react') },
             { from: './node_modules/react-dom/umd', to: path.resolve(__dirname, './wwwroot/js/lib/react-dom') },
-            { from: './node_modules/rigby/dist', to: path.resolve(__dirname, './wwwroot/js/lib/rigby') }
+            { from: './node_modules/rigby/dist', to: path.resolve(__dirname, './wwwroot/js/lib/rigby') },
+            { from: './node_modules/react-select/dist', to: path.resolve(__dirname, './wwwroot/css') }
         ])
     ],
     externals: {

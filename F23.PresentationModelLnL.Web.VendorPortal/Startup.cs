@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using F23.PresentationModelLnL.DependencyManager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,6 +34,15 @@ namespace F23.PresentationModelLnL.Web.VendorPortal
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true,
+                    ReactHotModuleReplacement = true,
+                    HotModuleReplacementClientOptions = new Dictionary<string, string>
+                    {
+                        {"requestTimeout", "30000" }
+                    }
+                });
             }
             else
             {
