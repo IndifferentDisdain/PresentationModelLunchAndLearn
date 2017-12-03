@@ -29,6 +29,7 @@ namespace F23.PresentationModelLnL.DependencyManager
         private static void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<ICaseSheetRepository, CaseSheetRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
         }
 

@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { StoreCallback } from 'rigby';
 import CreateStore, { ICreateStoreState } from '../create.store';
-import {CaseSheetPostModel} from '../Models';
+import { CaseSheetPostModel } from '../Models';
+import Select from 'react-select';
+import {IdAndName} from '../../Core/Models';
+import ProductsComponent from './products.component'
 
 export default class CreateComponent extends React.Component<{}, ICreateStoreState> {
 
@@ -27,27 +30,76 @@ export default class CreateComponent extends React.Component<{}, ICreateStoreSta
         this.setState(state);
     }
 
-    handleFieldChange: any = (propName: keyof(CaseSheetPostModel), e: any) => {
+    handleInputChange: any = (propName: keyof (CaseSheetPostModel), e: any) => {
         CreateStore.handlePropChange(propName, e.currentTarget.value);
+    }
+
+    handleSelectChange: any = (propName: keyof(CaseSheetPostModel), valueObj: IdAndName) => {
+        CreateStore.handlePropChange(propName, valueObj.id);
+    }
+
+    getLocations = (input: string) => {
+        return fetch(`/api/locations?searchTerm=${input}`)
+            .then(response => response.json())
+            .then(json => {
+                return { options: json };
+            });
+    }
+
+    handleAddProduct = () => {
+        CreateStore.addProduct();
     }
 
     render() {
         const {
-            caseSheet
+            caseSheet,
+            items
         } = this.state;
 
         return (
-            <div className='form-group'>
-                <label htmlFor='caseSheetNumber'>Case Sheet Number</label>
-                <input
-                    type='text'
-                    className='form-control'
-                    required
-                    value={caseSheet.caseSheetNumber || ''}
-                    id='caseSheetNumber'
-                    name='caseSheetNumber'
-                    onChange={this.handleFieldChange.bind(this, 'caseSheetNumber')}
-                />
+            <div>
+                <div className='form-group'>
+                    <label htmlFor='caseSheetNumber'>Case Sheet Number</label>
+                    <input
+                        type='text'
+                        className='form-control'
+                        required
+                        value={caseSheet.caseSheetNumber || ''}
+                        id='caseSheetNumber'
+                        name='caseSheetNumber'
+                        onChange={this.handleInputChange.bind(this, 'caseSheetNumber')}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='locationId'>Location</label>
+                    <Select.Async
+                        id='locationId'
+                        name='locationId'
+                        labelKey='name'
+                        valueKey='id'
+                        value={caseSheet.locationId || ''}
+                        loadOptions={this.getLocations}
+                        onChange={this.handleSelectChange.bind(this, 'locationId')}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label htmlFor='caseDate'>Case Date</label>
+                    <input
+                        type='date'
+                        className='form-control'
+                        required
+                        value={caseSheet.caseDate || ''}
+                        id='caseDate'
+                        name='caseDate'
+                        onChange={this.handleInputChange.bind(this, 'caseDate')}
+                    />
+                </div>
+                <hr />
+                <h2>Products</h2>
+                <button type="button" className="btn btn-primary" onClick={this.handleAddProduct}><span className="glyphicon glyphicon-plus"></span> Add</button>
+                {items && items.length ?
+                    <ProductsComponent products={items} />
+                : <p>No products added.</p>}
             </div>
         );
     }

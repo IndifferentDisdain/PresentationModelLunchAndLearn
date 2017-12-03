@@ -7,5 +7,7 @@ namespace F23.PresentationModelLnL.Contracts.Repositories
     public interface IProductRepository
     {
         Task<IEnumerable<ProductDetails>> GetProductDetailsAsync(int[] productIds, int vendorId);
+
+        Task<IEnumerable<ProductDetails>> GetProductsAsync(int vendorId, string searchTerm);
     }
 }

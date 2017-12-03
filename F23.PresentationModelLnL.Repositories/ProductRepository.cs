@@ -19,5 +19,15 @@ namespace F23.PresentationModelLnL.Repositories
         {
             return await _context.ProductDetails.Where(x => vendorId == x.VendorId && productIds.Contains(x.Id)).ToListAsync();
         }
+
+        public async Task<IEnumerable<ProductDetails>> GetProductsAsync(int vendorId, string searchTerm)
+        {
+            var query = _context.ProductDetails.Where(x => x.VendorId == vendorId);
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(x => x.ProductSku.Contains(searchTerm));
+            }
+            return await query.ToListAsync();
+        }
     }
 }

@@ -71,6 +71,7 @@
     <Build Include="dbo\Views\VCaseSheetDetails.sql" />
     <Build Include="dbo\Tables\Products.sql" />
     <Build Include="dbo\Tables\CaseSheetProducts.sql" />
+    <Build Include="dbo\Views\VProductDetails.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />

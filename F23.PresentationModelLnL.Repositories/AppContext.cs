@@ -1,4 +1,5 @@
 ﻿using F23.PresentationModelLnL.Domain.CaseSheets;
+using F23.PresentationModelLnL.Domain.Locations;
 using F23.PresentationModelLnL.Domain.Products;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,8 @@ namespace F23.PresentationModelLnL.Repositories
         public DbSet<CaseSheetProduct> CaseSheetProducts { get; set; }
 
         public DbSet<CaseSheet> CaseSheets { get; set; }
+
+        public DbSet<Location> Locations { get; set; }
 
         public DbSet<ProductDetails> ProductDetails { get; set; }
 
