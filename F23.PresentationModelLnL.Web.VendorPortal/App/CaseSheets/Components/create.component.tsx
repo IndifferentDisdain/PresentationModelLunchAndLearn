@@ -46,10 +46,6 @@ export default class CreateComponent extends React.Component<{}, ICreateStoreSta
             });
     }
 
-    handleAddProduct = () => {
-        CreateStore.addProduct();
-    }
-
     render() {
         const {
             caseSheet,
@@ -94,12 +90,12 @@ export default class CreateComponent extends React.Component<{}, ICreateStoreSta
                         onChange={this.handleInputChange.bind(this, 'caseDate')}
                     />
                 </div>
-                <hr />
+                <hr />  
                 <h2>Products</h2>
-                <button type="button" className="btn btn-primary" onClick={this.handleAddProduct}><span className="glyphicon glyphicon-plus"></span> Add</button>
-                {items && items.length ?
-                    <ProductsComponent products={items} />
-                : <p>No products added.</p>}
+                <ProductsComponent products={items} />
+                <button type="button" className="btn btn-primary" disabled={!CreateStore.canSave}>
+                    <span className="glyphicon glyphicon-disk"></span> Save
+                </button>
             </div>
         );
     }

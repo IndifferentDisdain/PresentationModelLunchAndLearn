@@ -2,16 +2,38 @@ import * as React from 'react';
 import { ProductDetails } from '../../Products';
 import ProductComponent from './product.component';
 import CreateStore from '../create.store';
+import Select from 'react-select';
 
 class Props {
     products: Array<ProductDetails>;
 }
 
 interface IState {
-
+    searchTerm: string;
 }
 
 export default class ProductsComponent extends React.Component<Props, IState> {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchTerm: ''
+        }
+    }
+
+    addProduct = (product: ProductDetails) => {
+        CreateStore.addProduct(product);
+    }
+
+    getProducts = (input: string) => {
+        return fetch(`/api/products?searchTerm=${input}`)
+            .then(response => response.json())
+            .then(json => {
+                return {
+                    options: json
+                }
+            });
+    }
 
     render() {
         const {
@@ -34,6 +56,17 @@ export default class ProductsComponent extends React.Component<Props, IState> {
                     {products.map(x => {
                         return (<ProductComponent key={x.productId || ''} product={x} />);
                     })}
+                    <tr>
+                        <td>
+                            <Select.Async
+                                labelKey='productSku'
+                                valueKey='productId'
+                                value={this.state.searchTerm}
+                                loadOptions={this.getProducts}
+                                onChange={this.addProduct}
+                            />
+                        </td>
+                    </tr>
                 </tbody>
                 <tfoot>
                     <tr>

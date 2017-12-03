@@ -1,6 +1,6 @@
 import Store from 'rigby';
 import { CaseSheetPostModel, CaseSheetItemPostModel } from './Models';
-import {ProductDetails} from '../Products';
+import { ProductDetails } from '../Products';
 
 export interface ICreateStoreState {
     caseSheet: CaseSheetPostModel
@@ -26,15 +26,21 @@ export class CreateStore extends Store<ICreateStoreState> {
         this.emitChange();
     }
 
-    addProduct() {
-        this.state.items.push(new ProductDetails());
+    handleQtyChanged(product: ProductDetails, qty: number) {
+        product.quantity = qty;
+        product.extPrice = product.quantity * product.unitPrice;
         this.emitChange();
     }
 
-    setProduct(existingProduct: ProductDetails, update: ProductDetails) {
-        this.state.items.splice(this.state.items.indexOf(existingProduct), 1);
-        update.extPrice = update.quantity * update.unitPrice;
-        this.state.items.push(update);
+    removeProduct(product: ProductDetails) {
+        const idx = this.state.items.indexOf(product);
+        this.state.items.splice(idx, 1);
+        this.emitChange();
+    }
+
+    addProduct(product: ProductDetails) {
+        product.extPrice = product.quantity * product.unitPrice;
+        this.state.items.push(product);
         this.emitChange();
     }
 
@@ -42,12 +48,31 @@ export class CreateStore extends Store<ICreateStoreState> {
         const {
             items
         } = this.state;
-        if(!items || !items.length)
+        if (!items || !items.length)
             return 0;
-        
+
         return items.reduce((a, b) => {
             return a + (b.extPrice || 0)
         }, 0);
+    }
+
+    get canSave(): boolean {
+        const {
+            caseSheet,
+            items
+        } = this.state;
+
+        if (!items || !items.length)
+            return false;
+
+        if (!caseSheet)
+            return false;
+        if (!caseSheet.locationId)
+            return false;
+        if (!caseSheet.caseSheetNumber)
+            return false;
+
+        return true;
     }
 }
 
