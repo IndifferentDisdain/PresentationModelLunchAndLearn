@@ -16,9 +16,12 @@ namespace F23.PresentationModelLnL.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<CaseSheetDetails>> GetCaseSheetsAsync()
+        public async Task<IEnumerable<CaseSheetDetails>> GetCaseSheetsAsync(int? vendorId = null)
         {
-            return await _context.CaseSheetDetails.ToListAsync();
+            var query = _context.CaseSheetDetails.AsQueryable();
+            if (vendorId.HasValue)
+                query = query.Where(x => x.VendorId == vendorId.Value);
+            return await query.ToListAsync();
         }
 
         public Task<CaseSheetDetails> GetCaseSheetDetailsAsync(int caseSheetId)
@@ -49,6 +52,11 @@ namespace F23.PresentationModelLnL.Repositories
         public void UpdateCaseSheet(CaseSheet caseSheet)
         {
             _context.Entry(caseSheet).State = EntityState.Modified;
+        }
+
+        public Task<CaseSheet> GetCaseSheetAsync(int caseSheetId)
+        {
+            return _context.CaseSheets.FindAsync(caseSheetId);
         }
     }
 }

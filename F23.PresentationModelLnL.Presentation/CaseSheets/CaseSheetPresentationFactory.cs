@@ -14,7 +14,7 @@ namespace F23.PresentationModelLnL.Presentation.CaseSheets
             _caseSheetRepository = caseSheetRepository;
         }
 
-        public async Task<CaseSheetDetailsPresentationModel> GetCaseSheetDetailsAsync(int caseSheetId, bool isUserAdmin)
+        public async Task<CaseSheetDetailsPresentationModel> GetCaseSheetDetailsAsync(int caseSheetId, bool isUserAdmin, bool isProcessor, int? vendorId = null)
         {
             var model = await _caseSheetRepository.GetCaseSheetDetailsAsync(caseSheetId);
             if (model == null)
@@ -22,12 +22,16 @@ namespace F23.PresentationModelLnL.Presentation.CaseSheets
                 throw new EntityNotFoundException(typeof(CaseSheetDetails), caseSheetId);
             }
 
+            if (vendorId.HasValue && model.VendorId != vendorId.Value)
+                throw new EntityNotFoundException(typeof(CaseSheetDetails), caseSheetId);
+
             return new CaseSheetDetailsPresentationModel
             {
                 CaseSheetDetails = model,
                 CaseSheetProducts = await _caseSheetRepository.GetCaseSheetProductsAsync(caseSheetId),
                 CanDelete = isUserAdmin,
-                CanEdit = isUserAdmin
+                CanEdit = isUserAdmin,
+                CanProcess = isProcessor && !model.IsProcessed
             };
         }
     }

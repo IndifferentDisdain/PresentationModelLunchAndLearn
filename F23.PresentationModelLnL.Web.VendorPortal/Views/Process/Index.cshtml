@@ -1,0 +1,55 @@
+﻿@model IEnumerable<F23.PresentationModelLnL.Domain.CaseSheets.CaseSheetDetails>
+@{
+    ViewData["Title"] = "Index (Internal)";
+}
+<h2>Case Sheets</h2>
+<a asp-controller="CaseSheets" asp-action="Create" class="btn btn-primary">Create</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(x => x.CaseSheetNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.VendorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.LocationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.CaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.IsProcessed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.TotalCost)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var caseSheet in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(caseSheet.CaseSheetNumber, "Details", new { id = caseSheet.Id })
+            </td>
+            <td>
+                @Html.DisplayFor(x => caseSheet.VendorName)
+            </td>
+            <td>
+                @Html.DisplayFor(x => caseSheet.LocationName)
+            </td>
+            <td>
+                @Html.DisplayFor(x => caseSheet.CaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(x => caseSheet.IsProcessed)
+            </td>
+            <td>
+                @Html.DisplayFor(x => caseSheet.TotalCost)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

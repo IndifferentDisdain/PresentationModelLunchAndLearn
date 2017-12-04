@@ -12,7 +12,6 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
     {
         private readonly ICaseSheetRepository _caseSheetRepository;
         private readonly ICaseSheetPresentationFactory _caseSheetPresentationFactory;
-
         private readonly ICaseSheetService _caseSheetService;
 
         // This would generally be handled by user auth, but skipping that for now.
@@ -29,14 +28,14 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var model = await _caseSheetRepository.GetCaseSheetsAsync();
+            var model = await _caseSheetRepository.GetCaseSheetsAsync(_vendorId);
             return View(model);
         }
 
         // GET: CaseSheets/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            var vm = await _caseSheetPresentationFactory.GetCaseSheetDetailsAsync(id, User?.IsInRole("Administrator") ?? false);
+            var vm = await _caseSheetPresentationFactory.GetCaseSheetDetailsAsync(id, User?.IsInRole("Administrator") ?? false, false, _vendorId);
             return View(vm);
         }
 

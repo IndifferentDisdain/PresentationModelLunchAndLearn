@@ -26,7 +26,16 @@ namespace F23.PresentationModelLnL.Domain.CaseSheets
         [DisplayFormat(DataFormatString = "{0:c}")]
         public decimal TotalCost { get; set; }
 
+        [DisplayName("Total Price")]
+        [DisplayFormat(DataFormatString = "{0:c}")]
+        public decimal TotalPrice { get; set; }
+
         [DisplayName("Processed?")]
         public bool IsProcessed { get; set; }
+
+        public int VendorId { get; set; }
+
+        [DisplayName("Vendor")]
+        public string VendorName { get; set; }
     }
 }

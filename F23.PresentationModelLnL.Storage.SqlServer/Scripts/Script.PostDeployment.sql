@@ -40,7 +40,7 @@ BEGIN
 
 	INSERT INTO CaseSheets (Id, CaseSheetNumber, LocationId, VendorId, CaseDate, IsProcessed) VALUES
 	(1, 'CS-1', 1, 1, '2017-10-01', 0),
-	(2, 'CS-2', 2, 1, '2017-10-03', 0)
+	(2, 'CS-2', 2, 2, '2017-10-03', 0)
 
 	SET IDENTITY_INSERT CaseSheets OFF
 

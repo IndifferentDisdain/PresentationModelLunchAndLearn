@@ -6,12 +6,13 @@ namespace F23.PresentationModelLnL.Contracts.Repositories
 {
     public interface ICaseSheetRepository
     {
-        Task<IEnumerable<CaseSheetDetails>> GetCaseSheetsAsync();
+        Task<IEnumerable<CaseSheetDetails>> GetCaseSheetsAsync(int? vendorId = null);
         Task<CaseSheetDetails> GetCaseSheetDetailsAsync(int caseSheetId);
         Task<IList<CaseSheetProduct>> GetCaseSheetProductsAsync(int caseSheetId);
         void AddCaseSheet(CaseSheet caseSheet);
         void AddCaseSheetProducts(IEnumerable<CaseSheetProduct> products);
         Task SaveAsync();
         void UpdateCaseSheet(CaseSheet caseSheet);
+        Task<CaseSheet> GetCaseSheetAsync(int caseSheetId);
     }
 }

@@ -12,5 +12,6 @@ namespace F23.PresentationModelLnL.Presentation.CaseSheets
         public bool CanDelete { get; set; }
 
         public bool CanEdit { get; set; }
+        public bool CanProcess { get; set; }
     }
 }

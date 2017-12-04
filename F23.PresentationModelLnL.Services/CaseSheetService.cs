@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using F23.PresentationModelLnL.Contracts.DataContracts;
+using F23.PresentationModelLnL.Contracts.Exceptions;
 using F23.PresentationModelLnL.Contracts.Repositories;
 using F23.PresentationModelLnL.Contracts.Services;
 using F23.PresentationModelLnL.Domain.CaseSheets;
@@ -45,17 +46,17 @@ namespace F23.PresentationModelLnL.Services
             var products = await _productRepository.GetProductDetailsAsync(request.Products.Select(x => x.ProductId).ToArray(), request.VendorId);
 
             _caseSheetRepository.AddCaseSheetProducts((from item in request.Products
-                let match = products.Single(x => x.Id == item.ProductId)
-                select new CaseSheetProduct
-                {
-                    CaseSheetId = caseSheet.Id,
-                    ProductId = item.ProductId,
-                    Quantity = item.Quantity,
-                    ProductDescription = match.Description,
-                    ProductSku = match.ProductSku,
-                    SellingPrice = match.SellingPrice,
-                    VendorPrice = match.VendorPrice
-                }).ToList());
+                                                       let match = products.Single(x => x.Id == item.ProductId)
+                                                       select new CaseSheetProduct
+                                                       {
+                                                           CaseSheetId = caseSheet.Id,
+                                                           ProductId = item.ProductId,
+                                                           Quantity = item.Quantity,
+                                                           ProductDescription = match.Description,
+                                                           ProductSku = match.ProductSku,
+                                                           SellingPrice = match.SellingPrice,
+                                                           VendorPrice = match.VendorPrice
+                                                       }).ToList());
 
             await _caseSheetRepository.SaveAsync();
 
@@ -63,6 +64,20 @@ namespace F23.PresentationModelLnL.Services
 
             return caseSheet.Id;
 
+        }
+
+        public async Task ProcessAsync(int caseSheetId)
+        {
+            var caseSheet = await _caseSheetRepository.GetCaseSheetAsync(caseSheetId);
+            if (caseSheet == null)
+                throw new EntityNotFoundException(typeof(CaseSheet), caseSheetId);
+
+            if (caseSheet.IsProcessed)
+                throw new InvalidOperationException($"Case sheet {caseSheetId} has already been processed; aborting.");
+
+            caseSheet.IsProcessed = true;
+            _caseSheetRepository.UpdateCaseSheet(caseSheet);
+            await _caseSheetRepository.SaveAsync();
         }
     }
 }

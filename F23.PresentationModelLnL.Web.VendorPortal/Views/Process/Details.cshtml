@@ -1,0 +1,90 @@
+﻿@model F23.PresentationModelLnL.Presentation.CaseSheets.CaseSheetDetailsPresentationModel
+
+@{
+    ViewData["Title"] = "Details (Internal)";
+    var caseSheet = Model.CaseSheetDetails;
+}
+
+<h2>Case Sheet Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.CaseSheetNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.CaseSheetNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.VendorName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.VendorName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.LocationName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.LocationName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.CaseDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.CaseDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.TotalCost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.TotalCost)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.TotalPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.TotalPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(x => caseSheet.IsProcessed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => caseSheet.IsProcessed)
+        </dd>
+    </dl>
+</div>
+<hr />
+<h3>Products</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(x => Model.CaseSheetProducts[0].ProductSku)</th>
+            <th>@Html.DisplayNameFor(x => Model.CaseSheetProducts[0].Quantity)</th>
+            <th>@Html.DisplayNameFor(x => Model.CaseSheetProducts[0].VendorPrice)</th>
+            <th>@Html.DisplayNameFor(x => Model.CaseSheetProducts[0].TotalVendorPrice)</th>
+            <th>@Html.DisplayNameFor(x => Model.CaseSheetProducts[0].SellingPrice)</th>
+            <th>@Html.DisplayNameFor(x => Model.CaseSheetProducts[0].TotalSellingPrice)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.CaseSheetProducts)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => p.ProductSku)<br /><small>@Html.DisplayFor(x => p.ProductDescription)</small></td>
+                <td>@Html.DisplayFor(x => p.Quantity)</td>
+                <td>@Html.DisplayFor(x => p.VendorPrice)</td>
+                <td>@Html.DisplayFor(x => p.TotalVendorPrice)</td>
+                <td>@Html.DisplayFor(x => p.SellingPrice)</td>
+                <td>@Html.DisplayFor(x => p.TotalSellingPrice)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    @if (Model.CanProcess)
+    {
+        @Html.ActionLink("Process", "Process", new { id = Model.CaseSheetDetails.Id }, new {@class="btn btn-primary"})
+    }
+    <a asp-action="Index" class="btn btn-default">Back to List</a>
+</div>
