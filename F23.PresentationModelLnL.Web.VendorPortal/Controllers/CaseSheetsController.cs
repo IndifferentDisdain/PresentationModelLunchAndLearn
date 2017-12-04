@@ -67,9 +67,9 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
                     return View();
 
                 var request = model.ToCaseSheetCreateRequest(_vendorId);
-                await _caseSheetService.CreateCaseSheetAsync(request);
+                var caseSheetId = await _caseSheetService.CreateCaseSheetAsync(request);
 
-                return RedirectToAction(nameof(Index));
+                return Ok(caseSheetId);
             }
             catch
             {

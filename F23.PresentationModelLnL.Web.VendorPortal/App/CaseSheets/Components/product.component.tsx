@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ProductDetails } from '../../Products';
-import CreateStore from '../create.store';
+import CreateStore from '../store';
 
 class Props {
     product: ProductDetails;

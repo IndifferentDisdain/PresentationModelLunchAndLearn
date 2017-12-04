@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { StoreCallback } from 'rigby';
-import CreateStore, { ICreateStoreState } from '../create.store';
+import CreateStore, { ICreateStoreState } from '../store';
 import { CaseSheetPostModel } from '../Models';
 import Select from 'react-select';
 import {IdAndName} from '../../Core/Models';
 import ProductsComponent from './products.component'
+import { LocationsService } from '../../Locations';
 
 export default class CreateComponent extends React.Component<{}, ICreateStoreState> {
 
@@ -39,8 +40,7 @@ export default class CreateComponent extends React.Component<{}, ICreateStoreSta
     }
 
     getLocations = (input: string) => {
-        return fetch(`/api/locations?searchTerm=${input}`)
-            .then(response => response.json())
+        return LocationsService.getLocations(input)
             .then(json => {
                 return { options: json };
             });

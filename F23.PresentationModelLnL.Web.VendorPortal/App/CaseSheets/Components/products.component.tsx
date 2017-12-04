@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ProductDetails } from '../../Products';
+import { ProductDetails, ProductsService } from '../../Products';
 import ProductComponent from './product.component';
-import CreateStore from '../create.store';
+import CreateStore from '../store';
 import Select from 'react-select';
 
 class Props {
@@ -26,8 +26,7 @@ export default class ProductsComponent extends React.Component<Props, IState> {
     }
 
     getProducts = (input: string) => {
-        return fetch(`/api/products?searchTerm=${input}`)
-            .then(response => response.json())
+        return ProductsService.getProducts(input)
             .then(json => {
                 return {
                     options: json

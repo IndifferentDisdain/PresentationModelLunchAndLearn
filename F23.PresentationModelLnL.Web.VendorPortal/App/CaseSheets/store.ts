@@ -1,6 +1,7 @@
 import Store from 'rigby';
 import { CaseSheetPostModel, CaseSheetItemPostModel } from './Models';
 import { ProductDetails } from '../Products';
+import CaseSheetService from './service';
 
 export interface ICreateStoreState {
     caseSheet: CaseSheetPostModel
@@ -46,27 +47,10 @@ export class CreateStore extends Store<ICreateStoreState> {
 
     save() {
         this.state.caseSheet.products = this.state.items.map(x => CaseSheetItemPostModel.ToPostModel(x));
-        
-        // const formData = new FormData();
-        // formData.append('model', JSON.stringify(this.state.caseSheet));
-
-        // headers: {
-        //     'Content-Type': 'application/json',
-        //     'Accept': 'application/json'
-        // },
-        fetch('/CaseSheets/Create', {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }),
-            // body: {model: JSON.stringify(this.state.caseSheet)}
-            body: JSON.stringify(this.state.caseSheet)
-        })
-        .then(response => {
-            if(response.ok)
-                window.location.href = '/CaseSheets';
-        });
+        CaseSheetService.postCaseSheet(this.state.caseSheet)
+            .then((caseSheetId: number) => {
+                window.location.href = `/CaseSheets/Details/${caseSheetId}`;
+            });
     }
 
     get total(): number {
