@@ -1,4 +1,4 @@
-﻿CREATE VIEW [dbo].[VCaseSheetDetails]
+﻿CREATE VIEW [dbo].[CaseSheetDetails]
 	AS 
 	SELECT 
 		cs.Id,

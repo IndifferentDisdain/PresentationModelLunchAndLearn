@@ -1,4 +1,4 @@
-﻿CREATE VIEW [dbo].[VProductDetails]
+﻿CREATE VIEW [dbo].[ProductDetails]
 	AS
 SELECT
 	p.Id,

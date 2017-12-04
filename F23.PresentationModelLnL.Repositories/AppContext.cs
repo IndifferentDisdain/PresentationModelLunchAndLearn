@@ -27,8 +27,8 @@ namespace F23.PresentationModelLnL.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CaseSheetDetails>().ToTable("VCaseSheetDetails");
-            modelBuilder.Entity<ProductDetails>().ToTable("VProductDetails");
+            modelBuilder.Entity<CaseSheetDetails>().ToTable("CaseSheetDetails");
+            modelBuilder.Entity<ProductDetails>().ToTable("ProductDetails");
         }
     }
 }
