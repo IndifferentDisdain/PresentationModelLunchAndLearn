@@ -10,6 +10,7 @@ namespace F23.PresentationModelLnL.Contracts.Repositories
         Task<CaseSheetDetails> GetCaseSheetDetailsAsync(int caseSheetId);
         Task<IList<CaseSheetProduct>> GetCaseSheetProductsAsync(int caseSheetId);
         void AddCaseSheet(CaseSheet caseSheet);
+        void AddCaseSheetProducts(IEnumerable<CaseSheetProduct> products);
         Task SaveAsync();
         void UpdateCaseSheet(CaseSheet caseSheet);
     }

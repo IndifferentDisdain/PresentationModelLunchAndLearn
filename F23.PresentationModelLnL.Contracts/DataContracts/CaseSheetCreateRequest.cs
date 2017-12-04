@@ -12,6 +12,7 @@ namespace F23.PresentationModelLnL.Contracts.DataContracts
         public int VendorId { get; set; }
 
         public IEnumerable<CaseSheetProductCreateRequest> Products { get; set; }
+        public string CaseSheetNumber { get; set; }
     }
 
     public class CaseSheetProductCreateRequest

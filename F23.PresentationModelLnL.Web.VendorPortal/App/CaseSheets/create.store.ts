@@ -44,6 +44,31 @@ export class CreateStore extends Store<ICreateStoreState> {
         this.emitChange();
     }
 
+    save() {
+        this.state.caseSheet.products = this.state.items.map(x => CaseSheetItemPostModel.ToPostModel(x));
+        
+        // const formData = new FormData();
+        // formData.append('model', JSON.stringify(this.state.caseSheet));
+
+        // headers: {
+        //     'Content-Type': 'application/json',
+        //     'Accept': 'application/json'
+        // },
+        fetch('/CaseSheets/Create', {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }),
+            // body: {model: JSON.stringify(this.state.caseSheet)}
+            body: JSON.stringify(this.state.caseSheet)
+        })
+        .then(response => {
+            if(response.ok)
+                window.location.href = '/CaseSheets';
+        });
+    }
+
     get total(): number {
         const {
             items

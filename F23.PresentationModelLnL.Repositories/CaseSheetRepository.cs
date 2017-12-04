@@ -36,6 +36,11 @@ namespace F23.PresentationModelLnL.Repositories
             _context.CaseSheets.Add(caseSheet);
         }
 
+        public void AddCaseSheetProducts(IEnumerable<CaseSheetProduct> products)
+        {
+            _context.CaseSheetProducts.AddRange(products);
+        }
+
         public Task SaveAsync()
         {
             return _context.SaveChangesAsync();

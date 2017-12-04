@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using F23.PresentationModelLnL.Contracts.Repositories;
 using F23.PresentationModelLnL.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -47,8 +48,8 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 
         // POST: CaseSheets/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CaseSheetPostModel model)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([FromBody]CaseSheetPostModel model)
         {
             try
             {
@@ -60,7 +61,7 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception e)
             {
                 return View();
             }

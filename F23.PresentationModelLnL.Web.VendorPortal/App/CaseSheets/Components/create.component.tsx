@@ -46,6 +46,10 @@ export default class CreateComponent extends React.Component<{}, ICreateStoreSta
             });
     }
 
+    handleSaveClicked = () => {
+        CreateStore.save();
+    }
+
     render() {
         const {
             caseSheet,
@@ -93,7 +97,12 @@ export default class CreateComponent extends React.Component<{}, ICreateStoreSta
                 <hr />  
                 <h2>Products</h2>
                 <ProductsComponent products={items} />
-                <button type="button" className="btn btn-primary" disabled={!CreateStore.canSave}>
+                <button 
+                    type="button" 
+                    className="btn btn-primary" 
+                    disabled={!CreateStore.canSave}
+                    onClick={this.handleSaveClicked}
+                >
                     <span className="glyphicon glyphicon-disk"></span> Save
                 </button>
             </div>

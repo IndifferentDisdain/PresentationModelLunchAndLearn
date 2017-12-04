@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using F23.PresentationModelLnL.Contracts.DataContracts;
@@ -26,7 +27,8 @@ namespace F23.PresentationModelLnL.Services
                 CaseDate = request.CaseDate,
                 IsProcessed = false,
                 LocationId = request.Locationid,
-                VendorId = request.VendorId
+                VendorId = request.VendorId,
+                CaseSheetNumber = request.CaseSheetNumber
             };
 
             // TODO.JS: Unit of work/transaction? Need ID before we can save the case sheet number, chicken or egg?
@@ -42,9 +44,25 @@ namespace F23.PresentationModelLnL.Services
 
             var products = await _productRepository.GetProductDetailsAsync(request.Products.Select(x => x.ProductId).ToArray(), request.VendorId);
 
-            // case sheet items
-            // notifications
-            throw new NotImplementedException();
+            _caseSheetRepository.AddCaseSheetProducts((from item in request.Products
+                let match = products.Single(x => x.Id == item.ProductId)
+                select new CaseSheetProduct
+                {
+                    CaseSheetId = caseSheet.Id,
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity,
+                    ProductDescription = match.Description,
+                    ProductSku = match.ProductSku,
+                    SellingPrice = match.SellingPrice,
+                    VendorPrice = match.VendorPrice
+                }).ToList());
+
+            await _caseSheetRepository.SaveAsync();
+
+            // TODO: notifications
+
+            return caseSheet.Id;
+
         }
     }
 }
