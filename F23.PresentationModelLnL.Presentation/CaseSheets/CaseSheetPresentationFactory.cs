@@ -24,7 +24,7 @@ namespace F23.PresentationModelLnL.Presentation.CaseSheets
 
             if (vendorId.HasValue && model.VendorId != vendorId.Value)
                 throw new EntityNotFoundException(typeof(CaseSheetDetails), caseSheetId);
-
+            
             return new CaseSheetDetailsPresentationModel
             {
                 CaseSheetDetails = model,

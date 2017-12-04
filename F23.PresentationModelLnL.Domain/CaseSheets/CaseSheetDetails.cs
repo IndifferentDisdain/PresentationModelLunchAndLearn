@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace F23.PresentationModelLnL.Domain.CaseSheets
 {
+    /// <summary>
+    /// This is a flattened view of a case sheet. So long include upon include upon include...
+    /// Also, no EF here.
+    /// </summary>
     public class CaseSheetDetails
     {
         public int Id { get; set; }

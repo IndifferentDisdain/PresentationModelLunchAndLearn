@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 {
+    /// <summary>
+    /// In this domain, all vendors have access to all locations. Sure, why not?
+    /// </summary>
     [Produces("application/json")]
     [Route("api/Locations")]
     public class LocationsController : Controller

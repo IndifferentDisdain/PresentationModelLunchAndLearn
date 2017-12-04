@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace F23.PresentationModelLnL.Domain.CaseSheets
 {
+    /// <summary>
+    /// Our POCO, but notice no EF dependencies...
+    /// </summary>
     public class CaseSheet
     {
         [Key]

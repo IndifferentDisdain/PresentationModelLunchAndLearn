@@ -24,6 +24,7 @@ namespace F23.PresentationModelLnL.Web.VendorPortal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            // Abstract away dependency management!
             ServiceConfiguration.AddServices(services, Configuration);
         }
 

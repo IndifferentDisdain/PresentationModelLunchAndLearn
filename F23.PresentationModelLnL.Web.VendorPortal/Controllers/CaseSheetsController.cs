@@ -8,6 +8,10 @@ using F23.PresentationModelLnL.Web.VendorPortal.Models;
 
 namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 {
+    /// <summary>
+    /// This is the controller for a vendor to use. They won't be able to
+    /// access case sheets for any other vendor.
+    /// </summary>
     public class CaseSheetsController : Controller
     {
         private readonly ICaseSheetRepository _caseSheetRepository;
@@ -28,6 +32,7 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 
         public async Task<ActionResult> Index()
         {
+            // Be sure we only get case sheets for our vendor.
             var model = await _caseSheetRepository.GetCaseSheetsAsync(_vendorId);
             return View(model);
         }
@@ -35,6 +40,10 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
         // GET: CaseSheets/Details/5
         public async Task<ActionResult> Details(int id)
         {
+            // double-check to make sure someone didn't get cute w/ the case sheet id
+            // I don't want the vendors to see our selling price, but I can control that in the razor view.
+            // Also, in a more complex app, we could use claims instead of interrogating user roles.
+            // Controllers are great at this point, so let them do it.
             var vm = await _caseSheetPresentationFactory.GetCaseSheetDetailsAsync(id, User?.IsInRole("Administrator") ?? false, false, _vendorId);
             return View(vm);
         }
@@ -47,6 +56,8 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 
         // POST: CaseSheets/Create
         [HttpPost]
+        // Yeah, I cheated here.
+        // Also, a problem to be solved later, but reactjs validation.
         //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([FromBody]CaseSheetPostModel model)
         {

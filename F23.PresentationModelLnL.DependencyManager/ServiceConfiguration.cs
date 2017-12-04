@@ -9,6 +9,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace F23.PresentationModelLnL.DependencyManager
 {
+    /// <summary>
+    /// This class/project is a sort of God entity, in that it has a reference to all other 
+    /// projects in the solution. However, this ensures that every other project only
+    /// references projects it actually needs. This is the also the only project aside from 
+    /// the Repositories project that has a reference to EF #likeabaws.
+    /// </summary>
     public static class ServiceConfiguration
     {
         public static void AddServices(IServiceCollection services, IConfiguration configuration)

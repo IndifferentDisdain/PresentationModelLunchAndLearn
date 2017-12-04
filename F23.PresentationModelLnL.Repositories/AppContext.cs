@@ -5,6 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace F23.PresentationModelLnL.Repositories
 {
+    /// <summary>
+    /// Our EF context. Note this  is only public b/c I need to access is via the dependency manager,
+    /// which is the only project that has a reference to this project.
+    /// </summary>
     public class AppContext : DbContext
     {
         public AppContext(DbContextOptions options) : base(options)

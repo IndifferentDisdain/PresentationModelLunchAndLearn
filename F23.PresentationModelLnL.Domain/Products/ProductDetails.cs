@@ -1,5 +1,9 @@
 ﻿namespace F23.PresentationModelLnL.Domain.Products
 {
+    /// <summary>
+    /// Flattened view of products. Since my app can't create/update/delete products,
+    /// there's no need for the standard Product class.
+    /// </summary>
     public class ProductDetails
     {
         public int Id { get; set; }
