@@ -61,20 +61,13 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([FromBody]CaseSheetPostModel model)
         {
-            try
-            {
-                if (!ModelState.IsValid)
-                    return View();
+            if (!ModelState.IsValid)
+                return BadRequest();
 
-                var request = model.ToCaseSheetCreateRequest(_vendorId);
-                var caseSheetId = await _caseSheetService.CreateCaseSheetAsync(request);
+            var request = model.ToCaseSheetCreateRequest(_vendorId);
+            var caseSheetId = await _caseSheetService.CreateCaseSheetAsync(request);
 
-                return Ok(caseSheetId);
-            }
-            catch
-            {
-                return View();
-            }
+            return Ok(caseSheetId);
         }
     }
 }

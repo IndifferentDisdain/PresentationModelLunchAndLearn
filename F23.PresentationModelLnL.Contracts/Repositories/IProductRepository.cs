@@ -1,6 +1,6 @@
-﻿using F23.PresentationModelLnL.Domain.Products;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using F23.PresentationModelLnL.Domain.ReadModels;
 
 namespace F23.PresentationModelLnL.Contracts.Repositories
 {

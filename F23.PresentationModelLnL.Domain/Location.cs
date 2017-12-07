@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace F23.PresentationModelLnL.Domain.Locations
+namespace F23.PresentationModelLnL.Domain
 {
     public class Location
     {

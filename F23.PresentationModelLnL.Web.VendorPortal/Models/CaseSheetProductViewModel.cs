@@ -1,4 +1,4 @@
-﻿using F23.PresentationModelLnL.Domain.Products;
+﻿using F23.PresentationModelLnL.Domain.ReadModels;
 
 namespace F23.PresentationModelLnL.Web.VendorPortal.Models
 {

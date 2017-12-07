@@ -1,4 +1,4 @@
-﻿namespace F23.PresentationModelLnL.Domain.Products
+﻿namespace F23.PresentationModelLnL.Domain.ReadModels
 {
     /// <summary>
     /// Flattened view of products. Since my app can't create/update/delete products,

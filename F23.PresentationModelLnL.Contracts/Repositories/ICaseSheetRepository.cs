@@ -1,4 +1,5 @@
-﻿using F23.PresentationModelLnL.Domain.CaseSheets;
+﻿using F23.PresentationModelLnL.Domain;
+using F23.PresentationModelLnL.Domain.ReadModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,10 +10,9 @@ namespace F23.PresentationModelLnL.Contracts.Repositories
         Task<IEnumerable<CaseSheetDetails>> GetCaseSheetsAsync(int? vendorId = null);
         Task<CaseSheetDetails> GetCaseSheetDetailsAsync(int caseSheetId);
         Task<IList<CaseSheetProduct>> GetCaseSheetProductsAsync(int caseSheetId);
-        void AddCaseSheet(CaseSheet caseSheet);
-        void AddCaseSheetProducts(IEnumerable<CaseSheetProduct> products);
-        Task SaveAsync();
-        void UpdateCaseSheet(CaseSheet caseSheet);
+        Task AddCaseSheetAsync(CaseSheet caseSheet);
+        Task AddCaseSheetProductsAsync(IEnumerable<CaseSheetProduct> products);
+        Task UpdateCaseSheetAsync(CaseSheet caseSheet);
         Task<CaseSheet> GetCaseSheetAsync(int caseSheetId);
     }
 }

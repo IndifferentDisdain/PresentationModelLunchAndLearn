@@ -5,7 +5,7 @@ using F23.PresentationModelLnL.Contracts.DataContracts;
 using F23.PresentationModelLnL.Contracts.Exceptions;
 using F23.PresentationModelLnL.Contracts.Repositories;
 using F23.PresentationModelLnL.Contracts.Services;
-using F23.PresentationModelLnL.Domain.CaseSheets;
+using F23.PresentationModelLnL.Domain;
 
 namespace F23.PresentationModelLnL.Services
 {
@@ -32,32 +32,26 @@ namespace F23.PresentationModelLnL.Services
             };
 
             // TODO.JS: Unit of work/transaction? Need ID before we can save the case sheet number, chicken or egg?
-            _caseSheetRepository.AddCaseSheet(caseSheet);
-
-            await _caseSheetRepository.SaveAsync();
+            await _caseSheetRepository.AddCaseSheetAsync(caseSheet);
 
             caseSheet.GenerateCaseSheetNumber();
 
-            _caseSheetRepository.UpdateCaseSheet(caseSheet);
-
-            await _caseSheetRepository.SaveAsync();
+            await _caseSheetRepository.UpdateCaseSheetAsync(caseSheet);
 
             var products = await _productRepository.GetProductDetailsAsync(request.Products.Select(x => x.ProductId).ToArray(), request.VendorId);
 
-            _caseSheetRepository.AddCaseSheetProducts((from item in request.Products
-                                                       let match = products.Single(x => x.Id == item.ProductId)
-                                                       select new CaseSheetProduct
-                                                       {
-                                                           CaseSheetId = caseSheet.Id,
-                                                           ProductId = item.ProductId,
-                                                           Quantity = item.Quantity,
-                                                           ProductDescription = match.Description,
-                                                           ProductSku = match.ProductSku,
-                                                           SellingPrice = match.SellingPrice,
-                                                           VendorPrice = match.VendorPrice
-                                                       }).ToList());
-
-            await _caseSheetRepository.SaveAsync();
+            await _caseSheetRepository.AddCaseSheetProductsAsync((from item in request.Products
+                                                                  let match = products.Single(x => x.Id == item.ProductId)
+                                                                  select new CaseSheetProduct
+                                                                  {
+                                                                      CaseSheetId = caseSheet.Id,
+                                                                      ProductId = item.ProductId,
+                                                                      Quantity = item.Quantity,
+                                                                      ProductDescription = match.Description,
+                                                                      ProductSku = match.ProductSku,
+                                                                      SellingPrice = match.SellingPrice,
+                                                                      VendorPrice = match.VendorPrice
+                                                                  }).ToList());
 
             // TODO: notifications
 
@@ -75,8 +69,7 @@ namespace F23.PresentationModelLnL.Services
                 throw new InvalidOperationException($"Case sheet {caseSheetId} has already been processed; aborting.");
 
             caseSheet.IsProcessed = true;
-            _caseSheetRepository.UpdateCaseSheet(caseSheet);
-            await _caseSheetRepository.SaveAsync();
+            await _caseSheetRepository.UpdateCaseSheetAsync(caseSheet);
         }
     }
 }

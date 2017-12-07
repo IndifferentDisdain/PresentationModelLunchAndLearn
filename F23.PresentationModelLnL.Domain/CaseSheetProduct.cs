@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace F23.PresentationModelLnL.Domain.CaseSheets
+namespace F23.PresentationModelLnL.Domain
 {
     public class CaseSheetProduct
     {

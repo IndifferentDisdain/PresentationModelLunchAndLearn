@@ -1,9 +1,10 @@
 ﻿using F23.PresentationModelLnL.Contracts.Repositories;
-using F23.PresentationModelLnL.Domain.CaseSheets;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using F23.PresentationModelLnL.Domain;
+using F23.PresentationModelLnL.Domain.ReadModels;
 
 namespace F23.PresentationModelLnL.Repositories
 {
@@ -34,24 +35,22 @@ namespace F23.PresentationModelLnL.Repositories
             return await _context.CaseSheetProducts.Where(x => x.CaseSheetId == caseSheetId).ToListAsync();
         }
 
-        public void AddCaseSheet(CaseSheet caseSheet)
+        public Task AddCaseSheetAsync(CaseSheet caseSheet)
         {
             _context.CaseSheets.Add(caseSheet);
-        }
-
-        public void AddCaseSheetProducts(IEnumerable<CaseSheetProduct> products)
-        {
-            _context.CaseSheetProducts.AddRange(products);
-        }
-
-        public Task SaveAsync()
-        {
             return _context.SaveChangesAsync();
         }
 
-        public void UpdateCaseSheet(CaseSheet caseSheet)
+        public Task AddCaseSheetProductsAsync(IEnumerable<CaseSheetProduct> products)
+        {
+            _context.CaseSheetProducts.AddRange(products);
+            return _context.SaveChangesAsync();
+        }
+
+        public Task UpdateCaseSheetAsync(CaseSheet caseSheet)
         {
             _context.Entry(caseSheet).State = EntityState.Modified;
+            return _context.SaveChangesAsync();
         }
 
         public Task<CaseSheet> GetCaseSheetAsync(int caseSheetId)

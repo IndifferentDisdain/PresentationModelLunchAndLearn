@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using F23.PresentationModelLnL.Domain.CaseSheets;
+using F23.PresentationModelLnL.Domain;
+using F23.PresentationModelLnL.Domain.ReadModels;
 
 namespace F23.PresentationModelLnL.Presentation.CaseSheets
 {

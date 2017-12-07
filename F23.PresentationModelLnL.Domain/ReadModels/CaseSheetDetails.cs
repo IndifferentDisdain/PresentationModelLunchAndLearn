@@ -2,11 +2,11 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace F23.PresentationModelLnL.Domain.CaseSheets
+namespace F23.PresentationModelLnL.Domain.ReadModels
 {
     /// <summary>
     /// This is a flattened view of a case sheet. So long include upon include upon include...
-    /// Also, no EF here.
+    /// Also, no EF here. Read Model.
     /// </summary>
     public class CaseSheetDetails
     {

@@ -1,9 +1,9 @@
 ﻿using F23.PresentationModelLnL.Contracts.Repositories;
-using F23.PresentationModelLnL.Domain.Products;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using F23.PresentationModelLnL.Domain.ReadModels;
 
 namespace F23.PresentationModelLnL.Repositories
 {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using F23.PresentationModelLnL.Contracts.Exceptions;
 using F23.PresentationModelLnL.Contracts.Repositories;
-using F23.PresentationModelLnL.Domain.CaseSheets;
+using F23.PresentationModelLnL.Domain.ReadModels;
 
 namespace F23.PresentationModelLnL.Presentation.CaseSheets
 {

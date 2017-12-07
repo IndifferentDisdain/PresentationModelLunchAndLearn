@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using F23.PresentationModelLnL.Contracts.Repositories;
-using F23.PresentationModelLnL.Domain.CaseSheets;
+using F23.PresentationModelLnL.Domain.ReadModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -29,7 +29,7 @@ namespace F23.PresentationModelLnL.Presentation.Tests
             var factory = new CaseSheets.CaseSheetPresentationFactory(mockRepo.Object);
 
             // Act
-            var result = await factory.GetCaseSheetDetailsAsync(caseSheetDetails.Id, false);
+            var result = await factory.GetCaseSheetDetailsAsync(caseSheetDetails.Id, false, false, 1);
 
             // Assert
             // TODO.JS: case sheet products

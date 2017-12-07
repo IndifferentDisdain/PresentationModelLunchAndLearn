@@ -1,6 +1,5 @@
-﻿using F23.PresentationModelLnL.Domain.CaseSheets;
-using F23.PresentationModelLnL.Domain.Locations;
-using F23.PresentationModelLnL.Domain.Products;
+﻿using F23.PresentationModelLnL.Domain;
+using F23.PresentationModelLnL.Domain.ReadModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace F23.PresentationModelLnL.Repositories

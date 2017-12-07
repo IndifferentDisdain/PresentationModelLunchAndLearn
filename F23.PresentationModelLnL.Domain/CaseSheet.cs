@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace F23.PresentationModelLnL.Domain.CaseSheets
+namespace F23.PresentationModelLnL.Domain
 {
     /// <summary>
     /// Our POCO, but notice no EF dependencies...

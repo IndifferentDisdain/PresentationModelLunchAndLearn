@@ -84,7 +84,7 @@
 <div>
     @if (Model.CanProcess)
     {
-        @Html.ActionLink("Process", "Process", new { id = Model.CaseSheetDetails.Id }, new {@class="btn btn-primary"})
+        <a asp-action="Process" asp-route-id="@Model.CaseSheetDetails.Id" class="btn btn-primary">Process</a>
     }
     <a asp-action="Index" class="btn btn-default">Back to List</a>
 </div>

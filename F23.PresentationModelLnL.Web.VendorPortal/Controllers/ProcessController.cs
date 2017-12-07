@@ -31,7 +31,7 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
             return View(model);
         }
 
-        // GET: CaseSheets/Details/5
+        // GET: Process/Details/5
         public async Task<ActionResult> Details(int id)
         {
             // No need to check vendor context here; I'm allowed :)
