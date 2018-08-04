@@ -14,8 +14,8 @@ BEGIN
 	SET IDENTITY_INSERT Locations ON
 
 	INSERT INTO Locations (Id, Name) VALUES
-	(1, 'Joe''s Garage'),
-	(2, 'Joe''s Apartment')
+	(1, 'Study Room'),
+	(2, 'Spanish Class')
 
 	SET IDENTITY_INSERT Locations OFF
 
@@ -26,8 +26,8 @@ BEGIN
 	SET IDENTITY_INSERT Vendors ON
 
 	INSERT INTO Vendors (Id, Name) VALUES
-	(1, 'First Vendor'),
-	(2, 'Second Vendor')
+	(1, 'Troy''s Letter Jackets'),
+	(2, 'Abed''s Meta Movies')
 
 	SET IDENTITY_INSERT Vendors OFF
 
@@ -51,9 +51,9 @@ BEGIN
 	SET IDENTITY_INSERT Products ON
 
 	INSERT INTO Products (Id, VendorId, ProductSku, Description, VendorPrice, SellingPrice) VALUES
-	(1, 1, 'PS-1', 'Knee Replacement System', 2000.00, 2500.00),
-	(2, 1, 'PS-2', 'Better Knee Replacement System', 3000.00, 3500.00),
-	(3, 2, 'AD-1', 'Heart Valve', 1500.00, 1750.00)
+	(1, 1, 'T-1', 'Troy''s Hight School Letter Jacket', 50.00, 150.00),
+	(2, 1, 'T-2', 'Troy''s College Letter Jacket', 50.00, 70.00),
+	(3, 2, 'A-1', 'Abed''s First Movie', 5.00, 25.00)
 
 	SET IDENTITY_INSERT Products OFF
 
@@ -64,9 +64,9 @@ BEGIN
 	SET IDENTITY_INSERT CaseSheetProducts ON
 
 	INSERT INTO CaseSheetProducts (Id, CaseSheetId, ProductId, ProductSku, ProductDescription, Quantity, VendorPrice, SellingPrice) VALUES
-	(1, 1, 1, 'PS-1', 'Knee Replacement System', 1, 2000.00, 2500.00),
-	(2, 2, 1, 'PS-1', 'Knee Replacement System', 1, 2000.00, 2500.00),
-	(3, 2, 2, 'PS-2', 'Better Knee Replacement System', 1, 3000.00, 3500.00)
+	(1, 1, 1, 'T-1', 'Troy''s Hight School Letter Jacket', 1, 50.00, 150.00),
+	(2, 1, 2, 'T-2', 'Troy''s College Letter Jacket', 1, 50.00, 70.00),
+	(3, 2, 3, 'A-1', 'Abed''s First Movie', 1, 5.00, 25.00)
 
 	SET IDENTITY_INSERT CaseSheetProducts OFF
 
