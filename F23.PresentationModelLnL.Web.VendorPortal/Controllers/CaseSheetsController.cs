@@ -1,10 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using F23.PresentationModelLnL.Contracts.Repositories;
+﻿using F23.PresentationModelLnL.Contracts.Repositories;
 using F23.PresentationModelLnL.Contracts.Services;
-using Microsoft.AspNetCore.Mvc;
+using F23.PresentationModelLnL.Domain.ReadModels;
 using F23.PresentationModelLnL.Presentation.CaseSheets;
 using F23.PresentationModelLnL.Web.VendorPortal.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 {
@@ -33,7 +34,7 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
         public async Task<ActionResult> Index()
         {
             // Be sure we only get case sheets for our vendor.
-            var model = await _caseSheetRepository.GetCaseSheetsAsync(_vendorId);
+            IEnumerable<CaseSheetDetails> model = await _caseSheetRepository.GetCaseSheetsAsync(_vendorId);
             return View(model);
         }
 
@@ -44,13 +45,18 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
             // I don't want the vendors to see our selling price, but I can control that in the razor view.
             // Also, in a more complex app, we could use claims instead of interrogating user roles.
             // Controllers are great at this point, so let them do it.
-            var vm = await _caseSheetPresentationFactory.GetCaseSheetDetailsAsync(id, User?.IsInRole("Administrator") ?? false, false, _vendorId);
+            CaseSheetDetailsPresentationModel vm = 
+                await _caseSheetPresentationFactory
+                .GetCaseSheetDetailsAsync(id, User?.IsInRole("Administrator") ?? false, false, _vendorId);
+
             return View(vm);
         }
 
         // GET: CaseSheets/Create
         public ActionResult Create()
         {
+            // Mini-SPA
+            // ajax calls to get products, where we need to hide some prices...
             return View();
         }
 

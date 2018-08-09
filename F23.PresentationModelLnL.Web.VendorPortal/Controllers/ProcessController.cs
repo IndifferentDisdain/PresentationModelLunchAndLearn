@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
-using F23.PresentationModelLnL.Contracts.Repositories;
+﻿using F23.PresentationModelLnL.Contracts.Repositories;
 using F23.PresentationModelLnL.Contracts.Services;
+using F23.PresentationModelLnL.Domain.ReadModels;
 using F23.PresentationModelLnL.Presentation.CaseSheets;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
 {
@@ -27,7 +29,8 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
         public async Task<ActionResult> Index()
         {
             // Gimmie all case sheets for all vendors.
-            var model = await _caseSheetRepository.GetCaseSheetsAsync();
+            // Note it's the same model and call as our case sheets controller, except for all vendors.
+            IEnumerable<CaseSheetDetails> model = await _caseSheetRepository.GetCaseSheetsAsync();
             return View(model);
         }
 
@@ -35,7 +38,11 @@ namespace F23.PresentationModelLnL.Web.VendorPortal.Controllers
         public async Task<ActionResult> Details(int id)
         {
             // No need to check vendor context here; I'm allowed :)
-            var vm = await _caseSheetPresentationFactory.GetCaseSheetDetailsAsync(id, false, true);
+            // Yes, the same call as our case sheets controller.
+            CaseSheetDetailsPresentationModel vm = 
+                await _caseSheetPresentationFactory
+                .GetCaseSheetDetailsAsync(id, false, true);
+
             return View(vm);
         }
 
